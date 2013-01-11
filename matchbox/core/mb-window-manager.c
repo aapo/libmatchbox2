@@ -382,7 +382,7 @@ mb_wm_handle_key_press (XKeyEvent       *xev,
   MBWindowManager *wm = (MBWindowManager*)userdata;
 
   mb_wm_keys_press (wm,
-		    XKeycodeToKeysym(wm->xdpy, xev->keycode, 0),
+		    XkbKeycodeToKeysym(wm->xdpy, xev->keycode, 0, 0),
 		    xev->state);
 
   return True;

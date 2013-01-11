@@ -33,7 +33,7 @@ keysym_needs_shift (MBWindowManager *wm, KeySym keysym)
 
   for (keycode = min_kc; keycode <= max_kc; keycode++)
     for (col = 0;
-	 (k = XKeycodeToKeysym (wm->xdpy, keycode, col)) != NoSymbol;
+	 (k = XkbKeycodeToKeysym (wm->xdpy, keycode, 0, col)) != NoSymbol;
 	 col++)
       if (k == keysym && col == 1)
 	return True;
@@ -352,7 +352,7 @@ mb_wm_keys_init(MBWindowManager *wm)
 	for (col = 0; col < 4; col += 2)
 	  {
 	    KeyCode code = mod_map->modifiermap[mod_idx * kpm + mod_key];
-	    KeySym sym = (code ? XKeycodeToKeysym(wm->xdpy, code, col) : 0);
+	    KeySym sym = (code ? XkbKeycodeToKeysym(wm->xdpy, code, 0, col) : 0);
 
 	    if (sym == last_sym) continue;
 	    last_sym = sym;
