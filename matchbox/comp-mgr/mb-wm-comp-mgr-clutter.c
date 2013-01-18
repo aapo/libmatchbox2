@@ -663,7 +663,7 @@ mb_wm_comp_mgr_clutter_init (MBWMObject *obj, va_list vap)
   clutter_actor_show (desktop);
   clutter_container_add_actor (CLUTTER_CONTAINER (arena), desktop);
   priv->desktops = mb_wm_util_list_append (priv->desktops, desktop);
-  clutter_stage_show_cursor (CLUTTER_STAGE (desktop));
+  clutter_stage_show_cursor (CLUTTER_STAGE (clutter_actor_get_stage(desktop)));
   return 1;
 }
 
